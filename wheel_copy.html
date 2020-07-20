@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>轮播图</title>
+    <style>
+    </style>
+</head>
+<body>
+    <div class="window">
+
+    </div>
+
+
+    <script src="aniMath.js"></script>
+    <script src="wheel_copy.js"></script>
+    <script>
+        new wheel(".window",{
+            imgs:["imgs/tianmao_jiaju.jpg","imgs/tianmao_shoes.jpg","imgs/tianmao_mike.jpg"],
+            links:["http://www.baidu.com","https://www.tmall.com/","http://www.baidu.com"],
+            imgColor:["orange","#c0c0c0","pink"],
+            imgSize:[1130,500],
+            btnColor:"blue",
+            btnActive:"red",
+            btnPos:["center","10"]
+        })
+    </script>
+    
+</body>
+</html>
