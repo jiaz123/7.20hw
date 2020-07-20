@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="按钮">
+    <div></div>
+    <script>
+        // 判断逻辑   <200  <400  =400
+        // 动画  通过人的眼镜 看到的连续不断的画面   21  4k码率  一帧画面所包含的信息大小  帧率
+
+        // 视频帧率  达到多少   1秒钟画面切换次数
+        // 程序的思想  简介 复杂  重复性劳动
+        // 没学一个技术难， 时间、经历、练习
+
+        var btn=document.querySelector("input")
+        var div=document.querySelector("div")
+        // var speed=5
+        // var flag=true
+
+        // 动画  setInterval  我们怎么操作才会更简单
+        // 50%用原生的函数   50%自己去构造代码
+        // 1.动画时间无法控制
+        // 2.
+
+        btn.onclick=function(){
+            animate(div,"width",400,5,function(){
+                animate(div,"width",200,-5)
+            })
+            animate(div,"height",400,5,function(){
+                animate(div,"height",200,-5)
+            })
+        }
+        // 帧率  电脑  屏幕的刷新率  60赫兹   1秒钟刷新60次
+        function animate(obj,attr,end,speed,callback){ 
+            var t=setInterval(function(){
+                var start=parseInt(getComputedStyle(obj,null)[attr])
+                var val=start+speed
+                if(speed>0){
+                    if(val>end){
+                        val=end
+                        clearInterval(t)
+                        
+                        if(callback){
+                            callback()
+                        }
+                    }
+                }else{
+                    if(val<end){
+                        val=end
+                        clearInterval(t)
+                        
+                        if(callback){
+                            callback()
+                        }
+                    }
+                }
+                obj.style[attr]=val+"px"
+            },50)
+        }
+
+
+
+        
+
+        // btn.onclick=function(){
+        //     if(!flag){
+        //         return
+        //     }
+        //     flag=false
+        //     var t=setInterval(function(){
+        //         var width=parseInt(getComputedStyle(div,null).width)
+        //         var height=parseInt(getComputedStyle(div,null).height)
+
+        //         var widths=width+5
+        //         var heights=height+5
+        //         if(widths>400){
+        //             widths=400
+        //             heights=400
+        //             clearInterval(t)
+        //             var t1=setInterval(function(){
+        //                 var width=parseInt(getComputedStyle(div,null).width)
+        //                 var height=parseInt(getComputedStyle(div,null).height)
+
+        //                 var widths=width-5
+        //                 var heights=height-5
+        //                 if(widths<200){
+        //                     widths=200
+        //                     heights=200
+        //                     clearInterval(t1)
+        //                     flag=true
+        //                 }
+        //                 div.style.width=widths+"px"
+        //                 div.style.height=heights+"px"
+        //             },50)
+        //         }
+        //         div.style.width=widths+"px"
+        //         div.style.height=heights+"px"
+        //     },50)
+        // }
+
+    </script>
+</body>
+</html>
